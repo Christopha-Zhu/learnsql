@@ -113,3 +113,7 @@ hive (tmp)> select date_add(‘2016-06-01’,15) from hive_sum limit 1;
 hive (tmp)> select date_sub(‘2016-06-01’,15) from hive_sum limit 1;
 2016-05-17
 ```
+
+## hive的设置
+- 保留表头
+  - set hive.cli.print.header=true;
