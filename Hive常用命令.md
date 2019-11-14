@@ -2,28 +2,9 @@
 ## 目录
 
 - [窗口函数](#窗口函数)
-  * [聚合函数+over](#聚合函数+over)
-  * [partition by子句](#partition by子句)
-  * [order by子句](#order by子句)
-  * [window子句](#window子句)
-  * [窗口函数中的序列函数](#窗口函数中的序列函数)
 - [时间函数](#时间函数)
-  * [unix_timestamp()](#unix_timestamp())
-  * [from_unixtime(bigint unixtime[,string format])](#from-unixtime-bigint-unixtime--string-format--)
-  * [unix_timestamp(string date)](#unix-timestamp-string-date-)
-  * [unix_timestamp(string date,string pattern)](#unix-timestamp-string-date-string-pattern-)
-  * [to_date(string date)](#to-date-string-date-)
-  * [year(string date)](#year-string-date-)
-  * [month(string date)](#month-string-date-)
-  * [day(string date)](#day-string-date-)
-  * [weekofyear(string date)](#weekofyear-string-date-)
-  * [datediff(string enddate,string begindate)](#datediff-string-enddate-string-begindate-)
-  * [date_add(string date,int days)](#date-add-string-date-int-days-)
-  * [date_sub(string date,int days)](#date-sub-string-date-int-days-)
 - [hive的设置](#hive的设置)
 - [聚合命令](#聚合命令)
-  * [GROUPING SETS,GROUPING__ID](#grouping-sets-grouping--id)
-  * [CUBE,ROLLUP](#cube-rollup)
 
 [目录生成工具](https://ecotrust-canada.github.io/markdown-toc/)
 
