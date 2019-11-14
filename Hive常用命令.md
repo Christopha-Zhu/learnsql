@@ -1,3 +1,31 @@
+## 目录
+
+- [窗口函数](#----)
+  * [聚合函数+over](#-----over)
+  * [partition by子句](#partition-by--)
+  * [order by子句](#order-by--)
+  * [window子句](#window--)
+  * [窗口函数中的序列函数](#----------)
+- [时间函数](#----)
+  * [unix_timestamp()](#unix-timestamp--)
+  * [from_unixtime(bigint unixtime[,string format])](#from-unixtime-bigint-unixtime--string-format--)
+  * [unix_timestamp(string date)](#unix-timestamp-string-date-)
+  * [unix_timestamp(string date,string pattern)](#unix-timestamp-string-date-string-pattern-)
+  * [to_date(string date)](#to-date-string-date-)
+  * [year(string date)](#year-string-date-)
+  * [month(string date)](#month-string-date-)
+  * [day(string date)](#day-string-date-)
+  * [weekofyear(string date)](#weekofyear-string-date-)
+  * [datediff(string enddate,string begindate)](#datediff-string-enddate-string-begindate-)
+  * [date_add(string date,int days)](#date-add-string-date-int-days-)
+  * [date_sub(string date,int days)](#date-sub-string-date-int-days-)
+- [hive的设置](#hive---)
+- [聚合命令](#----)
+  * [GROUPING SETS,GROUPING__ID](#grouping-sets-grouping--id)
+  * [CUBE,ROLLUP](#cube-rollup)
+
+[目录生成工具](https://ecotrust-canada.github.io/markdown-toc/)
+
 ## 窗口函数
 ### 聚合函数+over
 ### partition by子句
@@ -117,3 +145,39 @@ hive (tmp)> select date_sub(‘2016-06-01’,15) from hive_sum limit 1;
 ## hive的设置
 - 保留表头
   - set hive.cli.print.header=true;
+  
+## 聚合命令
+
+### GROUPING SETS,GROUPING__ID
+在一个GROUP BY查询中，根据不同的维度组合进行聚合，等价于将不同维度的GROUP BY结果集进行UNION ALL
+GROUPING__ID的值为<a href="https://www.codecogs.com/eqnedit.php?latex=2^0,2^1,2^2,..." target="_blank"><img src="https://latex.codecogs.com/svg.latex?2^0,2^1,2^2,..." title="2^0,2^1,2^2,..." /></a>
+```{sql}
+SELECT 
+month,
+day,
+COUNT(DISTINCT cookieid) AS uv,
+GROUPING__ID 
+FROM lxw1234 
+GROUP BY month,day 
+GROUPING SETS (month,day) 
+ORDER BY GROUPING__ID;
+ 
+month      day            uv      GROUPING__ID
+------------------------------------------------
+2015-03    NULL            5       1
+2015-04    NULL            6       1
+NULL       2015-03-10      4       2
+NULL       2015-03-12      1       2
+NULL       2015-04-12      2       2
+NULL       2015-04-13      3       2
+NULL       2015-04-15      2       2
+NULL       2015-04-16      2       2
+ 
+ 
+-- 等价于 
+SELECT month,NULL,COUNT(DISTINCT cookieid) AS uv,1 AS GROUPING__ID FROM lxw1234 GROUP BY month 
+UNION ALL 
+SELECT NULL,day,COUNT(DISTINCT cookieid) AS uv,2 AS GROUPING__ID FROM lxw1234 GROUP BY day
+```
+
+### CUBE,ROLLUP
