@@ -6,8 +6,6 @@
 - [hive的设置](#hive的设置)
 - [聚合命令](#聚合命令)
 
-[目录生成工具](https://ecotrust-canada.github.io/markdown-toc/)
-
 ## 窗口函数
 ### 聚合函数+over
 ### partition by子句
