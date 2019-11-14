@@ -1,4 +1,4 @@
-- [窗口函数](#----)
+- [窗口函数](#窗口函数)
   * [聚合函数+over](#-----over)
   * [partition by子句](#partition-by--)
   * [order by子句](#order-by--)
