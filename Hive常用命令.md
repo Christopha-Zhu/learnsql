@@ -5,6 +5,7 @@
 - [时间函数](#时间函数)
 - [hive的设置](#hive的设置)
 - [聚合命令](#聚合命令)
+- [hive shell 常用操作](https://www.cnblogs.com/skyl/p/4736129.html)
 
 ## 窗口函数
 ### 聚合函数+over
