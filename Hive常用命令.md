@@ -1,11 +1,22 @@
 # Hive常用命令
 ## 目录
 
+- [参数设置](#参数设置)
 - [窗口函数](#窗口函数)
 - [时间函数](#时间函数)
 - [hive的设置](#hive的设置)
 - [聚合命令](#聚合命令)
 - [hive shell 常用操作](https://www.cnblogs.com/skyl/p/4736129.html)
+
+## 参数设置
+### presto引擎用hive语法 
+SET compatible.grammar=hive  
+
+### 用etl模式去提高并行度
+set spark.hadoop.mapreduce.input.fileinputformat.split.maxsize=1048576;    
+set spark.hadoop.hive.exec.orc.split.strategy=ETL;     
+set spark.hadoopRDD.targetBytesInPartition=1048576;      
+set spark.memory.fraction=0.7;     
 
 ## 窗口函数
 ### 聚合函数+over
